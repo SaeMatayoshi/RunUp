@@ -11,18 +11,16 @@ public class Player : MonoBehaviour {
     AudioSource jumpSE;
     public AudioClip jump, highjump,decision,fallOcean;
 
-    //Player move speed
+    //ロボットの歩くスピード
     public float speed;
 
-    //Player Rigidbody
+    //ロボットのRigidbody
     private Rigidbody rigid;
+    // ロボ太のジャンプ力
     public float forceUp;
     public float jumpWaitTime = 1;
 
-    //Player position
-    //private Vector3 playerPos;
-
-    //private bool isTouch = false;
+    //ジャンプの判定
     public static bool isJump;
     bool jumpAni = false;
     bool isSound = false;
@@ -50,7 +48,6 @@ public class Player : MonoBehaviour {
         jumpSE = GameObject.FindGameObjectWithTag("GameCtrl").GetComponent<AudioSource>();
         roboAni = GetComponent<Animator>();
 	}
-    
 
     RaycastHit hit;
 	// Update is called once per frame
@@ -61,14 +58,12 @@ public class Player : MonoBehaviour {
         {
             Destroy(hit.collider.gameObject);
         }
-        //Debug.Log(timer);
         Debug.Log(timer2);
     }
 
+    // ロボットの動き
     void PlayerMove()
     {
-        //Animation Walk
-        
         transform.Translate(Vector3.right * Time.deltaTime * speed);
 
         timer += Time.deltaTime;
@@ -102,7 +97,6 @@ public class Player : MonoBehaviour {
         }
         if (FollowCamera.count > 5)
         {
-            //playerPos = new Vector3(1, 1, 0);
             Invoke("ResultScene", 0.7f);
         }
     }
@@ -116,25 +110,20 @@ public class Player : MonoBehaviour {
         }
     }
 
+    // リザルトシーンに遷移
     void ResultScene()
     {
         SceneManager.LoadScene("Result");
     }
 
+    // １段ジャンプ
     void Jump()
-    {
-        
-        /*if (jumpAni)
-        {
-            roboAni.SetTrigger("Jump");
-            jumpAni = false;
-            jumpSE.PlayOneShot(jump);
-        }*/
-       
+    {       
         transform.Translate(transform.up * Time.deltaTime * speed);
         rigid.AddForce(transform.up * forceUp);
     }
     
+    // ２段以上のジャンプ
     void ButtonJump()
     {
         transform.Translate(transform.up * Time.deltaTime * speed);
