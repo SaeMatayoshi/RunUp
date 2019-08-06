@@ -41,10 +41,11 @@ public class SliderController : MonoBehaviour {
             {
                 jumpEnergy -= 20 * Time.deltaTime;
 
+                // Sliderが0になったら
                 if (jumpEnergy < slider.minValue)
                 {
                     Player.isJump = false;
-                    Debug.Log("Empty");
+                    // Debug.Log("Empty");
                     timer = 0;
                 }
             }

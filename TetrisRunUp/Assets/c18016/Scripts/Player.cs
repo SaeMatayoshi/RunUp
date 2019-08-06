@@ -59,7 +59,6 @@ public class Player : MonoBehaviour {
         {
             Destroy(hit.collider.gameObject);
         }
-        Debug.Log(timer2);
     }
 
     // ロボットの動き
