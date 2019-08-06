@@ -8,6 +8,7 @@ public class SliderController : MonoBehaviour {
     public static Slider slider;
     PlayerCollider playerCollider;
 
+    // n秒待つためのtimer
     float timer;
 
     float jumpEnergy;
@@ -28,13 +29,14 @@ public class SliderController : MonoBehaviour {
 	void Update () {
         SliderEnergy();
 	}
-
+    // ロケットボタンの制御
     void SliderEnergy()
     {
         if (Player.isJump)
         {
             Timer();
 
+            // 2秒経ったらエネルギーが減っていく
             if (timer > 2)
             {
                 jumpEnergy -= 20 * Time.deltaTime;
@@ -43,19 +45,18 @@ public class SliderController : MonoBehaviour {
                 {
                     Player.isJump = false;
                     Debug.Log("Empty");
-                    //jumpEnergy = slider.maxValue;
                     timer = 0;
                 }
             }
         }
         else
         {
-            //jumpEnergy = slider.maxValue;
             timer = 0;
         }
 
         slider.value = jumpEnergy;
 
+        // プレイヤーが死んだら
         if (Player.destroyed)
         {
             jumpEnergy = slider.maxValue;
@@ -67,6 +68,5 @@ public class SliderController : MonoBehaviour {
     void Timer()
     {
         timer += 1 * Time.deltaTime;
-        //Debug.Log((int)timer);
     }
 }

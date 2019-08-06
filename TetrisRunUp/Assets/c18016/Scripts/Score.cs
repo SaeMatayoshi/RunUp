@@ -39,6 +39,7 @@ public class Score : MonoBehaviour {
         x = (int)player.transform.position.x;
         y = (int)player.transform.position.y;
 
+        // スコア 横
         if (x < 1)
         {
             x = 1;
@@ -47,6 +48,7 @@ public class Score : MonoBehaviour {
             maxX = x;
         }
 
+        // スコア 縦
         if (y < 1)
         {
             y = 1;
@@ -64,11 +66,5 @@ public class Score : MonoBehaviour {
             count++;
             Instantiate(energy, new Vector3(x + energyPps, y + 4 + 0.5f, 0), Quaternion.Euler(-20,-90,0));
         }
-
-        /*if(FollowCamera.count > 7)
-        {
-            if(highscore < score)
-            PlayerPrefs.SetInt("HighScore", score);
-        }*/
     }
 }
