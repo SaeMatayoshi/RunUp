@@ -1,7 +1,7 @@
 # roborisuran -ロボリスラン-
 
 ## ファイル構成
-Unityデータ
+[Unityデータ](https://github.com/SaeMatayoshi/RunUp/tree/master/TetrisRunUp)
 
 ## 概要
 ## ジャンル
@@ -11,7 +11,8 @@ Unityデータ
 Android
 
 ## 担当プログラムファイル
-ロボットの動き
+[ロボットの動き](https://github.com/SaeMatayoshi/RunUp/blob/master/TetrisRunUp/Assets/c18016/Scripts/Player.cs)  
+[ロケットボタン](https://github.com/SaeMatayoshi/RunUp/blob/master/TetrisRunUp/Assets/c18016/Scripts/SliderController.cs)
 
 ## ゲームストーリー
 年々争いや、自然災害が多発し海面も上昇していく中で、  
@@ -36,5 +37,3 @@ Unity 2018.2.8f1
 * 友寄 隆也（デザイナー）
 * 又吉 紗衣（プログラマ）
 * 宮城 沙耶（プログラマ）
-
-## ゲームスクリーンショット
