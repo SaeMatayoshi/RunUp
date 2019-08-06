@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour {
 
+    // プレイヤー
     public GameObject player;
     public float smoothTime;
 
-    //camera position
+    //カメラの位置
     private Vector3 camePos;
     private Vector3 targetPos;
 
-    float x;
-    float y;
-    float z;
+    float x, y, z;
 
-    //player camera distance
+    //プレイヤーとカメラの距離
     private Vector3 offset;
-    //player camera move distance 
+    //プレイヤーとカメラの move distance 
     private Vector3 distan;
     private Vector3 velocity = Vector3.zero;
 
@@ -28,17 +27,16 @@ public class FollowCamera : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //player.transform.position = new Vector3(1, 1, 0);
         offset = transform.position - player.transform.position;
         targetPos = player.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //Debug.Log(count);
-        //Debug.Log(isFollow);
+        
 	}
 
+    // カメラの動き
     private void LateUpdate()
     {
         x = player.transform.position.x + offset.x;
@@ -50,7 +48,6 @@ public class FollowCamera : MonoBehaviour {
 
         distan.y = camePos.y - player.transform.position.y;
         count = (int)distan.y;
-        //Debug.Log(count);
 
         if (count < 1)
         {
@@ -62,10 +59,8 @@ public class FollowCamera : MonoBehaviour {
             Start();
             y = targetPos.y + 5;
             camePos = new Vector3(x, y, z);
-            //transform.position = camePos;
             transform.position = Vector3.SmoothDamp(transform.position, camePos, ref velocity, smoothTime);
             
-            //Debug.Log("up!!");
             isFollow = false;
         }
         

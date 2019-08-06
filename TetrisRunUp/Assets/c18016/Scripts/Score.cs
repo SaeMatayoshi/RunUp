@@ -8,11 +8,13 @@ public class Score : MonoBehaviour {
 
     public GameObject player;
     public GameObject energy;
-    int x;
-    int maxX;
-    int y;
-    int maxY;
 
+    // プレイヤーの位置 x, y
+    int x, y;
+    // プレイヤーの最大位置 x, y
+    int maxX, maxY;
+
+    // スコアテキスト
     public Text scoreText;
 
     public static int score;
@@ -26,12 +28,12 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         ScoreCal();
-        //Debug.Log(Player.isDestroyed);
         scoreText.text = "" + score;
 	}
 
     int count = 1;
     int energyPps = 0;
+
     void ScoreCal()
     {
         x = (int)player.transform.position.x;

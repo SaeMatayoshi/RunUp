@@ -9,7 +9,8 @@ public class Player : MonoBehaviour {
 
     Animator roboAni;
     AudioSource jumpSE;
-    public AudioClip jump, highjump,decision,fallOcean;
+    // 効果音
+    public AudioClip jump, highjump, decision, fallOcean;
 
     //ロボットの歩くスピード
     public float speed;
@@ -95,12 +96,14 @@ public class Player : MonoBehaviour {
             }
 
         }
+        // 海に落ちた時
         if (FollowCamera.count > 5)
         {
             Invoke("ResultScene", 0.7f);
         }
     }
 
+    // 海に落ちる効果音の処理
     void TimeInterval2()
     {
         if (isSound)
@@ -130,6 +133,7 @@ public class Player : MonoBehaviour {
         rigid.AddForce((transform.up - rigid.velocity) * forceUp * 3);
     }
 
+    // ジャンプ効果音の制御
     void TimeInterval()
     {
         if (jumpAni)
@@ -143,6 +147,7 @@ public class Player : MonoBehaviour {
     public GameObject effect;
     GameObject Effect;
 
+    // ロケットボタンの制御
     public void OnJBDown()
     {
         if (sliderCtrl.sliderValue() > 0)
@@ -161,7 +166,7 @@ public class Player : MonoBehaviour {
              Quaternion.Euler(90, 0, 0));
         Effect.transform.parent = gameObject.transform;
     }
-
+    // ボタンが離されたら
     public void OnJBUp()
     {
         jumpSE.Stop();
@@ -172,14 +177,8 @@ public class Player : MonoBehaviour {
         {
             Destroy(i);
         }
-        //Invoke("effectDes", 1.0f);
     }
-
-    void effectDes()
-    {
-        
-    }
-
+    // アイテム回収
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Energy")

@@ -5,13 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
+    // ハイスコアテキスト
     public Text highscoreText;
+    // スコアテキスト
     public Text scoreText;
     public Player playercs;
 
     AudioSource click;
-    public AudioClip Decision,scoreSound;
-    //bool onClick;
+    // 効果音
+    public AudioClip Decision, scoreSound;
 
     int score;
     int highscore;
@@ -34,6 +36,7 @@ public class SceneController : MonoBehaviour {
         Invoke("MainScene", 0.4f);
     }
 
+    // メインシーンに遷移
     void MainScene()
     {
         Destroy(AudioController.game_ob);
@@ -45,7 +48,7 @@ public class SceneController : MonoBehaviour {
         click.PlayOneShot(Decision);
         Invoke("MainScene", 0.4f);
     }
-
+    
     public void OnClickTitle()
     {
         Debug.Log("title");
@@ -53,35 +56,27 @@ public class SceneController : MonoBehaviour {
         Invoke("TitleScene", 0.4f);
     }
 
+    // タイトルシーンに遷移
     void TitleScene()
     {
         SceneManager.LoadScene("Title");
     }
 
+    // リザルトシーンに遷移
     public void OnClickResult()
     {
         click.PlayOneShot(Decision);
         SceneManager.LoadScene("Result");
-        //Invoke("ResultScene", 0.4f*Time.deltaTime);
     }
     
-
-    /*public void OnClickJump()
-    {
-        Debug.Log("Jump!!");
-        playercs.Jump();
-    }*/
-
-
     void IsScene()
     {
         if (SceneManager.GetActiveScene().name == "Result")
         {
             timer += Time.deltaTime;
-            if(timer <0.2)
+            if(timer < 0.2)
             {
                 TimeInterval();
-                Debug.Log("hai");
                 timer = 1.0f;
             }
             score = Score.score;

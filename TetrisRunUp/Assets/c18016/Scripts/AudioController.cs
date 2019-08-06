@@ -7,8 +7,6 @@ public class AudioController : MonoBehaviour {
     public GameObject[] bgm_ob;
     public static GameObject game_ob;
 
-    //bool onAudio = false;
-    
     // Use this for initialization
     void Start () {
         
@@ -19,6 +17,7 @@ public class AudioController : MonoBehaviour {
         IsScene();
     }
 
+    // BGMの制御
     void IsScene()
     {
         if (SceneManager.GetActiveScene().name == "Main")
